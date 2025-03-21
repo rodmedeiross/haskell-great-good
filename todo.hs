@@ -13,7 +13,7 @@ dispatcher "delete" = deleteItem
 
 addItem :: [String] -> IO ()
 addItem [] = return ()
-addItem [fileName] = return ()
+addItem [filename] = return ()
 addItem (filename : one : args) = do
   appendFile filename (one ++ "\n")
   addItem (filename : args)
@@ -54,7 +54,7 @@ main :: IO ()
 main = forever $ do
   args <- getArgs
 
-  if length args < 0
+  if length args > 0
     then dispatcher (head args) (tail args)
     else do
       putStrLn "Wellcome TO...DO list"
