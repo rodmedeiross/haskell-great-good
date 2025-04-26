@@ -13,7 +13,6 @@ dispatcher "delete" = deleteItem
 
 addItem :: [String] -> IO ()
 addItem [] = return ()
-addItem [filename] = return ()
 addItem (filename : one : args) = do
   appendFile filename (one ++ "\n")
   addItem (filename : args)
